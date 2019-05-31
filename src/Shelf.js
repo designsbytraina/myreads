@@ -4,8 +4,8 @@ import Book from './Book';
 class Shelf extends React.Component {
   render() {
     const shelfStyling = {
-      backgroundColor: 'red',
-      height: '100%'
+      backgroundColor: 'lightblue',
+      margin: '35px'
     }
 
     const shelfTitleStyling = {
@@ -15,17 +15,18 @@ class Shelf extends React.Component {
 
     const shelfBoxStyling = {
       display: 'inline-block',
-      width: '100%'
+      width: '100%',
+      borderBottom: '2px solid grey'
     }
 
     return(
       <div style={shelfStyling}>
         <span style={shelfBoxStyling}>
-          <h2 style={shelfTitleStyling}>Shelf Name</h2>
+          <h2 style={shelfTitleStyling}>{this.props.title}</h2>
         </span>
-        <Book book="pride and prejudice"/>
-        <Book book="death of a salesman"/>
-        <Book book="bible"/>
+        {this.props.books.map( (book) => (
+          <Book book={book} />)
+        )}
       </div>
     );
   }
