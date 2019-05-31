@@ -1,4 +1,5 @@
 import React from 'react';
+import Book from './Book';
 
 class Shelf extends React.Component {
   render() {
@@ -22,7 +23,9 @@ class Shelf extends React.Component {
         <span style={shelfBoxStyling}>
           <h2 style={shelfTitleStyling}>Shelf Name</h2>
         </span>
-        <h3>Book</h3>
+        <Book book="pride and prejudice"/>
+        <Book book="death of a salesman"/>
+        <Book book="bible"/>
       </div>
     );
   }
