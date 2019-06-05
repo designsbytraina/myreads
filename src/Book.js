@@ -11,6 +11,7 @@ function Book(props) {
   return(
     <div style={bookRowStyling}>
       <h1>{props.book.title}</h1>
+      <p>{props.book.shelf}</p>
     </div>
   );
 }

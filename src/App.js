@@ -1,43 +1,44 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 import './App.css';
+import * as BooksAPI from './BooksAPI';
 import Nav from './Nav';
 import Shelf from './Shelf';
 
 class App extends React.Component {
   state = {
-    books: [
-      {
-        title: 'Pride & Prejudice',
-        author: 'Jane Austen',
-        dateAddedToShelf: '',
-        shelf: 'currentlyReading'
-      },
-      {
-        title: 'Things Fall Apart',
-        author: 'Chinowa Achebe',
-        dateAddedToShelf: '',
-        shelf: 'readLater'
-      },
-      {
-        title: 'Ficciones',
-        author: 'Jorge Luis Borges',
-        dateAddedToShelf: '',
-        shelf: 'completed'
-      }
-    ]
+    books: [],
+  }
+  // state = {
+  //   books: [
+  //     {
+  //       title: 'Pride & Prejudice',
+  //       author: 'Jane Austen',
+  //       dateAddedToShelf: '',
+  //       shelf: 'currentlyReading'
+  //     }
+  //   ]
+  // }
+
+  componentDidMount() {
+    BooksAPI.getAll()
+      .then( (books) => {
+        this.setState( () => ({books}) )
+      } );
   }
 
   render() {
-    // const currentlyReading = this.state.books.filter( (book) => book.shelf === 'currentlyReading' );
+    const currentlyReading = this.state.books.filter( (book) => book.shelf === 'currentlyReading' );
+    const readLater = this.state.books.filter( (book) => book.shelf === 'wantToRead' );
+    const completedBooks = this.state.books.filter( (book) => book.shelf === 'read' );
     return (
       <div className='App'>
         <Nav />
         <Route exact path='/' render={ () => (
           <div className='homeRoute'>
-            <Shelf title='Currently Reading' books={this.state.books.filter( (book) => book.shelf === 'currentlyReading' )} />
-            <Shelf title='Read Later' books={this.state.books.filter( (book) => book.shelf === 'readLater' )} />
-            <Shelf title='Completed' books={this.state.books.filter( (book) => book.shelf === 'completed' )} />
+            <Shelf title='Currently Reading' books={ currentlyReading } />
+            <Shelf title='Read Later' books={ readLater } />
+            <Shelf title='Completed' books={ completedBooks } />
           </div>
         ) } />
         <Route exact path='/search' render={ () => (
