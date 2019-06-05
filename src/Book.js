@@ -10,7 +10,7 @@ function Book(props) {
   }
   return(
     <div style={bookRowStyling}>
-      <h1>{props.book.title}</h1>
+      <h3>{props.book.title}</h3>
       <p>{props.book.shelf}</p>
     </div>
   );

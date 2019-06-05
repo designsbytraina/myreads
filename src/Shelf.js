@@ -10,13 +10,14 @@ class Shelf extends React.Component {
 
     const shelfTitleStyling = {
       fontWeight: '300',
-      fontFamily: '"HelveticaNeue-Light", "Helvetica Neue Light", sans-serif'
+      fontFamily: '"HelveticaNeue-Light", "Helvetica Neue Light", sans-serif',
+      width: '100%',
+      borderBottom: '2px solid grey'
     }
 
     const shelfBoxStyling = {
-      display: 'inline-block',
-      width: '100%',
-      borderBottom: '2px solid grey'
+      display: 'block',
+      marginTop: '0em'
     }
 
     return(

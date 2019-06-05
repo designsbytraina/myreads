@@ -4,6 +4,7 @@ import './App.css';
 import * as BooksAPI from './BooksAPI';
 import Nav from './Nav';
 import Shelf from './Shelf';
+import SearchBooks from './SearchBooks';
 
 class App extends React.Component {
   state = {
@@ -31,6 +32,7 @@ class App extends React.Component {
     const currentlyReading = this.state.books.filter( (book) => book.shelf === 'currentlyReading' );
     const readLater = this.state.books.filter( (book) => book.shelf === 'wantToRead' );
     const completedBooks = this.state.books.filter( (book) => book.shelf === 'read' );
+
     return (
       <div className='App'>
         <Nav />
@@ -43,7 +45,7 @@ class App extends React.Component {
         ) } />
         <Route exact path='/search' render={ () => (
           <div className='searchRoute'>
-            Hello, world!
+            <SearchBooks />
           </div>
         ) } />
 
