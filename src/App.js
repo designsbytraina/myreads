@@ -45,7 +45,7 @@ class App extends React.Component {
         ) } />
         <Route exact path='/search' render={ () => (
           <div className='searchRoute'>
-            <SearchBooks />
+            <SearchBooks books={this.state.books}/>
           </div>
         ) } />
 
