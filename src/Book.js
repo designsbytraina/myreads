@@ -1,9 +1,25 @@
 import React from 'react';
+// import * as BooksAPI from './BooksAPI';
 
 class Book extends React.Component {
   state = {
     menuOpen: false
   }
+
+  // DNU: BooksAPI is not working on update method
+  // updateShelf = (bookID, shelf) => {
+  //   console.log(bookID, shelf);
+  //   BooksAPI.update(bookID, shelf)
+  //     .then( (resp) => {
+  //       console.log(resp);
+  //       this.setState( {menuOpen: false} );
+  //     } );
+  // }
+
+  closeMenu = () => {
+    this.setState( {menuOpen: false} );
+  }
+
   render() {
 
     const bookStyling = {
@@ -58,7 +74,12 @@ class Book extends React.Component {
       paddingBottom: '10px'
     }
     const addToLinkStyling = {
-      paddingLeft: '5px'
+      paddingLeft: '5px',
+      border: 'none',
+      backgroundColor: 'transparent',
+      color: 'inherit',
+      fontSize: 'medium'
+
     }
     const closeButtonStyling = {
       float: 'right',
@@ -77,16 +98,16 @@ class Book extends React.Component {
           <div style={moveMenuStyling}>
             <p style={moveMenuTextStyling}>
               <span style={addToStyling}><strong>Add to</strong></span><br/>
-              <a style={addToLinkStyling}>+ Currently Reading</a><br/>
-              <a style={addToLinkStyling}>+ Read Later</a><br/>
-              <a style={addToLinkStyling}>+ Completed</a>
+              <button style={addToLinkStyling} onClick={ () => {this.props.updateShelf(this.props.book.id, 'currentlyReading'); this.setState({menuOpen: false});} }>+ Currently Reading</button><br/>
+              <button style={addToLinkStyling} onClick={ () => {this.props.updateShelf(this.props.book.id, 'wantToRead'); this.setState({menuOpen: false});} }>+ Read Later</button><br/>
+              <button style={addToLinkStyling} onClick={ () => {this.props.updateShelf(this.props.book.id, 'read'); this.setState({menuOpen: false});} }>+ Completed</button>
             </p>
             <button style={closeButtonStyling} onClick={ () => this.setState({menuOpen: false}) }>close</button>
           </div>
         }
         <p style={bookTitleStyling}>{this.props.book.title}</p>
         {this.props.book.authors.map( (authorName) => (
-          <p style={bookAuthorStyling}>{authorName}</p>
+          <p key={authorName} style={bookAuthorStyling}>{authorName}</p>
         ) )}
       </div>
     );

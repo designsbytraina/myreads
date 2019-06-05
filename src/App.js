@@ -10,25 +10,32 @@ class App extends React.Component {
   state = {
     books: [],
   }
-  // state = {
-  //   books: [
-  //     {
-  //       title: 'Pride & Prejudice',
-  //       author: 'Jane Austen',
-  //       dateAddedToShelf: '',
-  //       shelf: 'currentlyReading'
-  //     }
-  //   ]
-  // }
+
+  updateShelf = (bookID, shelf) => {
+    console.log(bookID, shelf);
+    // BooksAPI.update(bookID, shelf)
+    //   .then( (resp) => {
+    //     console.log(resp);
+    //   } );
+
+    // find the book in the books object, then update its shelf attribute
+    this.setState( (currState) => {
+      currState.books.filter((b) => {console.log(b); return b.id === bookID}).map( (book) => book.shelf = shelf );
+    } );
+    console.log(shelf);
+
+  }
 
   componentDidMount() {
     BooksAPI.getAll()
       .then( (books) => {
-        this.setState( () => ({books}) )
+        this.setState( () => ({books}) );
+        console.log('API called');
       } );
   }
 
   render() {
+    console.log('App render called');
     const currentlyReading = this.state.books.filter( (book) => book.shelf === 'currentlyReading' );
     const readLater = this.state.books.filter( (book) => book.shelf === 'wantToRead' );
     const completedBooks = this.state.books.filter( (book) => book.shelf === 'read' );
@@ -38,9 +45,9 @@ class App extends React.Component {
         <Nav />
         <Route exact path='/' render={ () => (
           <div className='homeRoute'>
-            <Shelf title='Currently Reading' books={ currentlyReading } />
-            <Shelf title='Read Later' books={ readLater } />
-            <Shelf title='Completed' books={ completedBooks } />
+            <Shelf title='Currently Reading' books={ currentlyReading } updateShelf={this.updateShelf} />
+            <Shelf title='Read Later' books={ readLater } updateShelf={this.updateShelf} />
+            <Shelf title='Completed' books={ completedBooks } updateShelf={this.updateShelf} />
           </div>
         ) } />
         <Route exact path='/search' render={ () => (

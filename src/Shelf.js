@@ -26,7 +26,7 @@ class Shelf extends React.Component {
           <h2 style={shelfTitleStyling}>{this.props.title}</h2>
         </span>
         {this.props.books.map( (book) => (
-          <Book book={book} />)
+          <Book key={book.id} book={book} updateShelf={this.props.updateShelf} />)
         )}
       </div>
     );
