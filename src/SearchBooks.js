@@ -10,9 +10,9 @@ class SearchBooks extends React.Component {
     this.setState({ query: queryString.trim() });
   }
 
-  clearQuery() {
-    this.updateQuery('');
-  }
+  // clearQuery() {
+  //   this.updateQuery('');
+  // }
 
   render() {
     // if the query is not empty, we will show results
@@ -38,7 +38,9 @@ class SearchBooks extends React.Component {
       width: '100%;'
     }
 
-    const resultsBoxStyling = {}
+    const resultsBoxStyling = {
+      marginTop: '15px'
+    }
 
     return(
       <div style={searchStyling}>
