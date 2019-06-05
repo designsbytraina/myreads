@@ -1,4 +1,5 @@
 import React from 'react';
+import { Route } from 'react-router-dom';
 import './App.css';
 import Nav from './Nav';
 import Shelf from './Shelf';
@@ -32,9 +33,19 @@ class App extends React.Component {
     return (
       <div className='App'>
         <Nav />
-        <Shelf title='Currently Reading' books={this.state.books.filter( (book) => book.shelf === 'currentlyReading' )} />
-        <Shelf title='Read Later' books={this.state.books.filter( (book) => book.shelf === 'readLater' )} />
-        <Shelf title='Completed' books={this.state.books.filter( (book) => book.shelf === 'completed' )} />
+        <Route exact path='/' render={ () => (
+          <div className='homeRoute'>
+            <Shelf title='Currently Reading' books={this.state.books.filter( (book) => book.shelf === 'currentlyReading' )} />
+            <Shelf title='Read Later' books={this.state.books.filter( (book) => book.shelf === 'readLater' )} />
+            <Shelf title='Completed' books={this.state.books.filter( (book) => book.shelf === 'completed' )} />
+          </div>
+        ) } />
+        <Route exact path='/search' render={ () => (
+          <div className='searchRoute'>
+            Hello, world!
+          </div>
+        ) } />
+
       </div>
     );
   }

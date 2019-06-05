@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class Nav extends React.Component {
   render() {
@@ -29,10 +30,10 @@ class Nav extends React.Component {
 
     return(
       <nav style={navStyling}>
-        <a href='/' style={logoStyling}>MyReads</a>
+        <Link to='/' style={logoStyling}>MyReads</Link>
         <div style={linkDivStyling}>
-          <a href='/' style={linkStyling}>My Shelves</a>
-          <a href='/search' style={linkStyling}>Search Library</a>
+          <Link to='/' style={linkStyling}>My Shelves</Link>
+          <Link to='/search' style={linkStyling}>Search Library</Link>
         </div>
       </nav>
     );
