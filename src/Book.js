@@ -45,7 +45,12 @@ class Book extends React.Component {
               <button className={`add-to-link ${this.state.activeShelf === 'wantToRead' ? 'active' : ''}`}  onClick={ () => {this.props.updateShelf(this.props.book.id, 'wantToRead'); this.setState({menuOpen: false, activeShelf: 'wantToRead'});} }>+ Read Later</button><br/>
               <button className={`add-to-link ${this.state.activeShelf === 'read' ? 'active' : ''}`} onClick={ () => {this.props.updateShelf(this.props.book.id, 'read'); this.setState({menuOpen: false, activeShelf: 'read'});} }>+ Completed</button>
             </p>
-            <button className='close-button' onClick={ () => this.setState({menuOpen: false}) }>close</button>
+
+            <button className='close-button' onClick={ () => this.setState({menuOpen: false}) }>
+              <svg fill="#fff" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" className='close-svg'>
+                <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+              </svg>
+            </button>
           </div>
         }
         <p className='book-title'>{this.props.book.title}</p>

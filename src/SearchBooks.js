@@ -8,7 +8,7 @@ class SearchBooks extends React.Component {
   }
 
   updateQuery(queryString) {
-    this.setState({ query: queryString.trim() });
+    this.setState({ query: queryString });
   }
 
   render() {
