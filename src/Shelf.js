@@ -4,7 +4,6 @@ import Book from './Book';
 class Shelf extends React.Component {
   render() {
     const shelfStyling = {
-      backgroundColor: 'lightblue',
       margin: '35px'
     }
 

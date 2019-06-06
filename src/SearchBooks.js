@@ -16,12 +16,11 @@ class SearchBooks extends React.Component {
 
   render() {
     // if the query is not empty, we will show results
-    const showBooks = this.state.query === ''
-      ? this.props.books
-      : this.props.books.filter( (book) => book.title.toLowerCase().includes(this.state.query.toLowerCase()));
+    const showBooks = this.state.query !== ''
+      ? this.props.books.filter( (book) => book.title.toLowerCase().includes(this.state.query.toLowerCase()))
+      : []
 
     const searchStyling = {
-      backgroundColor: 'lightblue',
       margin: '34px'
     }
 

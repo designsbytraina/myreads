@@ -26,11 +26,11 @@ class App extends React.Component {
 
     this.setState({books: filteredBooks.concat(thisBook)});
 
-    // DNU: BooksAPI is not working on update method
-    // BooksAPI.update(bookID, shelf)
-    //   .then( (resp) => {
-    //     console.log(resp);
-    //   });
+    // ATTENTION: BooksAPI is not working on update method, including call nonetheless
+    BooksAPI.update(bookID, shelf)
+      .then( (resp) => {
+        console.log(resp);
+      });
 
   }
 

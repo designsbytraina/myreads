@@ -19,7 +19,9 @@ class Nav extends React.Component {
     }
 
     const linkDivStyling = {
-      display: 'inline'
+      display: 'inline',
+      float: 'right',
+      paddingTop: '18px'
     }
 
     const logoStyling = {
