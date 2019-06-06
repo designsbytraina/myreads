@@ -1,0 +1,23 @@
+.Nav {
+  color: grey;
+  background-color: rgba(183,159,25,.5);
+  height: 60px;
+  padding: 10px;
+}
+.logo {
+  font-size: 50px;
+  font-weight: 100;
+  text-decoration: none;
+}
+.links-right {
+  display: inline;
+  float: right;
+  padding-top: 18px;
+}
+.links {
+  font-weight: 400;
+  font-size: 20px;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 0 10px 0 10px;
+}

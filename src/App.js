@@ -31,19 +31,16 @@ class App extends React.Component {
       .then( (resp) => {
         console.log(resp);
       });
-
   }
 
   componentDidMount() {
     BooksAPI.getAll()
       .then( (books) => {
         this.setState( () => ({books}) );
-        console.log('API called');
       } );
   }
 
   render() {
-    console.log('App render called');
     const currentlyReading = this.state.books.filter( (book) => book.shelf === 'currentlyReading' );
     const readLater = this.state.books.filter( (book) => book.shelf === 'wantToRead' );
     const completedBooks = this.state.books.filter( (book) => book.shelf === 'read' );
@@ -53,9 +50,9 @@ class App extends React.Component {
         <Nav />
         <Route exact path='/' render={ () => (
           <div className='homeRoute'>
-            <Shelf title='Currently Reading' books={ currentlyReading } updateShelf={this.updateShelf} />
-            <Shelf title='Read Later' books={ readLater } updateShelf={this.updateShelf} />
-            <Shelf title='Completed' books={ completedBooks } updateShelf={this.updateShelf} />
+            <Shelf title='Currently Reading' books={currentlyReading} updateShelf={this.updateShelf} />
+            <Shelf title='Read Later' books={readLater} updateShelf={this.updateShelf} />
+            <Shelf title='Completed' books={completedBooks} updateShelf={this.updateShelf} />
           </div>
         ) } />
         <Route exact path='/search' render={ () => (

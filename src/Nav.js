@@ -1,41 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './Nav.css';
 
 class Nav extends React.Component {
   render() {
-    const navStyling = {
-      color: 'grey',
-      backgroundColor: 'rgba(183,159,25,.5)',
-      height: '60px',
-      padding: '10px'
-    }
-
-    const linkStyling = {
-      fontWeight: '400',
-      fontSize: '20px',
-      textTransform: 'uppercase',
-      textDecoration: 'none',
-      padding: '0 10px 0 10px'
-    }
-
-    const linkDivStyling = {
-      display: 'inline',
-      float: 'right',
-      paddingTop: '18px'
-    }
-
-    const logoStyling = {
-      fontSize: '50px',
-      fontWeight: '100',
-      textDecoration: 'none'
-    }
-
     return(
-      <nav style={navStyling}>
-        <Link to='/' style={logoStyling}>MyReads</Link>
-        <div style={linkDivStyling}>
-          <Link to='/' style={linkStyling}>My Shelves</Link>
-          <Link to='/search' style={linkStyling}>Search Library</Link>
+      <nav className='Nav'>
+        <Link to='/' className='logo'>MyReads</Link>
+        <div className='links-right'>
+          <Link to='/' className='links'>My Shelves</Link>
+          <Link to='/search' className='links'>Search Library</Link>
         </div>
       </nav>
     );
