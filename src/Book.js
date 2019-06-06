@@ -29,7 +29,6 @@ class Book extends React.Component {
   }
 
   render() {
-
     return(
       <div className='Book'>
         <img src='https://via.placeholder.com/170x205' className='book-img' alt='placeholder' />
