@@ -12,7 +12,7 @@ class App extends React.Component {
   }
 
   updateShelf = (bookID, shelf) => {
-
+    // inefficient way to filter books and concatenate new book object with update shelf
     const filteredBooks = this.state.books.filter((b) => {
       return b.id !== bookID
     });
