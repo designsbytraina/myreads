@@ -60,7 +60,6 @@ class App extends React.Component {
             <SearchBooks books={this.state.books} updateShelf={this.updateShelf} />
           </div>
         ) } />
-
       </div>
     );
   }

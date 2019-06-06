@@ -1,0 +1,14 @@
+/* Shelf Component */
+.Shelf {
+  margin: 35px;
+}
+.shelf-title-box {
+  display: block;
+  margin-top: 0em;
+}
+.shelf-title {
+  font-weight: 300;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", sans-serif;
+  width: 100%;
+  border-bottom: 2px solid grey;
+}

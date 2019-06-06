@@ -1,5 +1,6 @@
 import React from 'react';
 import Book from './Book';
+import './SearchBooks.css';
 
 class SearchBooks extends React.Component {
   state = {
@@ -10,44 +11,19 @@ class SearchBooks extends React.Component {
     this.setState({ query: queryString.trim() });
   }
 
-  // clearQuery() {
-  //   this.updateQuery('');
-  // }
-
   render() {
     // if the query is not empty, we will show results
     const showBooks = this.state.query !== ''
       ? this.props.books.filter( (book) => book.title.toLowerCase().includes(this.state.query.toLowerCase()))
       : []
 
-    const searchStyling = {
-      margin: '34px'
-    }
-
-    const searchTitleStyling = {
-      fontWeight: '300',
-      fontFamily: '"HelveticaNeue-Light", "Helvetica Neue Light", sans-serif',
-      border: 'none',
-      borderBottom: '2px solid grey',
-      width: '100%',
-      fontSize: 'x-large'
-    }
-
-    const searchBoxStyling = {
-      width: '100%'
-    }
-
-    const resultsBoxStyling = {
-      marginTop: '15px'
-    }
-
     return(
-      <div style={searchStyling}>
-        <div style={searchBoxStyling}>
-          <input type='text' style={searchTitleStyling} placeholder='Search' value={this.state.query} onChange={(evt) => this.updateQuery(evt.target.value)}/>
+      <div className='SearchBooks'>
+        <div className='search-container'>
+          <input type='text' className='search-input' placeholder='Search' value={this.state.query} onChange={(evt) => this.updateQuery(evt.target.value)}/>
         </div>
 
-        <div style={resultsBoxStyling}>
+        <div className='results-container'>
           {showBooks.map( (book) => (
             <Book book={book} key={book.id} updateShelf={this.props.updateShelf} />
           ) )}

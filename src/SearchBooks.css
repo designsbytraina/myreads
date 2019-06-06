@@ -1,0 +1,18 @@
+/* SearchBooks Component */
+.SearchBooks {
+  margin: 34px;
+}
+.search-container {
+  width: 100%;
+}
+.search-input {
+  font-weight: 300;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", sans-serif;
+  border: none;
+  border-bottom: 2px solid grey;
+  width: 100%;
+  font-size: x-large;
+}
+.results-container {
+  margin-top: 15px;
+}
