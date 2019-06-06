@@ -35,7 +35,7 @@ class SearchBooks extends React.Component {
     }
 
     const searchBoxStyling = {
-      width: '100%;'
+      width: '100%'
     }
 
     const resultsBoxStyling = {
@@ -50,7 +50,7 @@ class SearchBooks extends React.Component {
 
         <div style={resultsBoxStyling}>
           {showBooks.map( (book) => (
-            <Book book={book} />
+            <Book book={book} key={book.id} updateShelf={this.props.updateShelf} />
           ) )}
         </div>
       </div>

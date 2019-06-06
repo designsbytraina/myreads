@@ -12,17 +12,25 @@ class App extends React.Component {
   }
 
   updateShelf = (bookID, shelf) => {
-    console.log(bookID, shelf);
+
+    const filteredBooks = this.state.books.filter((b) => {
+      return b.id !== bookID
+    });
+
+    const thisBook = this.state.books.filter((b) => {
+      return b.id === bookID
+    }).map( (book) => {
+      book.shelf = shelf;
+      return book;
+    });
+
+    this.setState({books: filteredBooks.concat(thisBook)});
+
+    // DNU: BooksAPI is not working on update method
     // BooksAPI.update(bookID, shelf)
     //   .then( (resp) => {
     //     console.log(resp);
-    //   } );
-
-    // find the book in the books object, then update its shelf attribute
-    this.setState( (currState) => {
-      currState.books.filter((b) => {console.log(b); return b.id === bookID}).map( (book) => book.shelf = shelf );
-    } );
-    console.log(shelf);
+    //   });
 
   }
 
@@ -52,7 +60,7 @@ class App extends React.Component {
         ) } />
         <Route exact path='/search' render={ () => (
           <div className='searchRoute'>
-            <SearchBooks books={this.state.books}/>
+            <SearchBooks books={this.state.books} updateShelf={this.updateShelf} />
           </div>
         ) } />
 
