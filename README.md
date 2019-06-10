@@ -6,7 +6,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Project Description
 
-The application contains two main routes ('/', '/search') which allow for a user to add and manage their books in a virtual library of shelves: *Currently Reading*, *Read Later*, and *Completed*.
+The application contains two main routes (`/`, `/search`) which allow for a user to add and manage their books in a virtual library of shelves: *Currently Reading*, *Read Later*, and *Completed*.
 
 When a user enters the application, their shelves are displayed, where they can move or remove books from their library. Navigating to the search page allows for a user to search for new books and manage each book's read status.
 
