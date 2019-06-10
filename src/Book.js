@@ -5,12 +5,14 @@ import './Book.css';
 class Book extends React.Component {
   state = {
     menuOpen: false,
-    activeShelf: ''
+    activeShelf: '',
+    imageURL: ''
   }
 
   componentDidMount() {
     this.setState({
-      activeShelf: this.props.book.shelf
+      activeShelf: this.props.book.shelf,
+      imageURL: this.props.book.imageLinks.thumbnail
     });
   }
 
@@ -21,7 +23,7 @@ class Book extends React.Component {
   render() {
     return(
       <div className='Book'>
-        <img src='https://via.placeholder.com/170x205' className='book-img' alt='placeholder' />
+        <img src={this.state.imageURL} className='book-img' alt='placeholder' />
         <button className='add-button' onClick={ () => this.setState({menuOpen: true}) }>
           <svg fill="#fff" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" className='add-svg'>
             <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>

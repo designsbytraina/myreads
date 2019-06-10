@@ -24,6 +24,8 @@ class App extends React.Component {
       return book;
     });
 
+    console.log(thisBook);
+
     this.setState({books: filteredBooks.concat(thisBook)});
 
     // update server with new shelf
