@@ -15,12 +15,20 @@
   display: block;
   z-index: -1
 }
+.add-button {
+  float: right;
+  border: none;
+  height: 30px;
+  width: 30px;
+  padding: 0;
+  margin-top: -20px;
+}
 .add-svg {
   height: 30px;
-  float: right;
+  /*float: right;*/
   background-color: rgba(183,159,25,1);
   border-radius: 15px;
-  margin-top: -20px;
+  /*margin-top: -20px;*/
   position: relative;
 }
 .book-title {
@@ -68,6 +76,18 @@
 }
 .active {
   background-color: rgba(183, 159, 25, .8);
+}
+.remove-link {
+  background-color: transparent;
+  border: none;
+  color: white;
+  padding: 0;
+  float: right;
+  padding: 5px 0 0 0;
+  margin-bottom: -30px;
+}
+.hidden {
+  display: none;
 }
 .close-button {
   float: right;

@@ -10,9 +10,9 @@ The application contains two main routes ('/', '/search') which allow for a user
 
 When a user enters the application, their shelves are displayed, where they can move or remove books from their library. Navigating to the search page allows for a user to search for new books and manage each book's read status.
 
-### Caveats
+### TODO
 
-Since the provided BookAPI's update method was not working, the shelf of a book is only maintained in local state and is not stored permanently. This means that refreshing the page will not display updates, even though the state is maintained across route changes on the search and home pages. This is noted in the code where calls were made to the API without success.
+The search page currently only allows for queries by book title. This should be resolved in the next version.
 
 ## Running the Project
 

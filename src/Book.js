@@ -5,18 +5,8 @@ import './Book.css';
 class Book extends React.Component {
   state = {
     menuOpen: false,
-    activeShelf: 'none'
+    activeShelf: ''
   }
-
-  // DNU: BooksAPI is not working on update method
-  // updateShelf = (bookID, shelf) => {
-  //   console.log(bookID, shelf);
-  //   BooksAPI.update(bookID, shelf)
-  //     .then( (resp) => {
-  //       console.log(resp);
-  //       this.setState( {menuOpen: false} );
-  //     } );
-  // }
 
   componentDidMount() {
     this.setState({
@@ -32,11 +22,11 @@ class Book extends React.Component {
     return(
       <div className='Book'>
         <img src='https://via.placeholder.com/170x205' className='book-img' alt='placeholder' />
-        <a onClick={ () => this.setState({menuOpen: true}) }>
+        <button className='add-button' onClick={ () => this.setState({menuOpen: true}) }>
           <svg fill="#fff" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" className='add-svg'>
             <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
           </svg>
-        </a>
+        </button>
         {this.state.menuOpen === true &&
           <div className='move-menu'>
             <p className='move-menu-text'>
@@ -44,6 +34,8 @@ class Book extends React.Component {
               <button className={`add-to-link ${this.state.activeShelf === 'currentlyReading' ? 'active' : ''}`} onClick={ () => {this.props.updateShelf(this.props.book.id, 'currentlyReading'); this.setState({menuOpen: false, activeShelf: 'currentlyReading'});} }>+ Currently Reading</button><br/>
               <button className={`add-to-link ${this.state.activeShelf === 'wantToRead' ? 'active' : ''}`}  onClick={ () => {this.props.updateShelf(this.props.book.id, 'wantToRead'); this.setState({menuOpen: false, activeShelf: 'wantToRead'});} }>+ Read Later</button><br/>
               <button className={`add-to-link ${this.state.activeShelf === 'read' ? 'active' : ''}`} onClick={ () => {this.props.updateShelf(this.props.book.id, 'read'); this.setState({menuOpen: false, activeShelf: 'read'});} }>+ Completed</button>
+
+              <button className={`remove-link ${this.state.activeShelf === '' ? 'hidden' : ''}`} onClick={ () => {this.props.updateShelf(this.props.book.id, 'none'); this.setState({menuOpen: false, activeShelf: ''});} }>Remove from shelf</button><br/>
             </p>
 
             <button className='close-button' onClick={ () => this.setState({menuOpen: false}) }>

@@ -26,7 +26,7 @@ class App extends React.Component {
 
     this.setState({books: filteredBooks.concat(thisBook)});
 
-    // ATTENTION: BooksAPI is not working on update method, including call nonetheless
+    // update server with new shelf
     BooksAPI.update(bookID, shelf)
       .then( (resp) => {
         console.log(resp);

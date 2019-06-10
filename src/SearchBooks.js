@@ -17,10 +17,15 @@ class SearchBooks extends React.Component {
       ? this.props.books.filter( (book) => book.title.toLowerCase().includes(this.state.query.toLowerCase()))
       : []
 
+    // TODO: filter other properties of a book, like authors and categories/genres
+    // const moreBooks = this.state.query !== ''
+    //   ? this.props.books.filter( (book) => book.authors.filter( (author) => author.toLowerCase().includes(this.state.query.toLowerCase())))
+    //   : []
+
     return(
       <div className='SearchBooks'>
         <div className='search-container'>
-          <input type='text' className='search-input' placeholder='Search' value={this.state.query} onChange={(evt) => this.updateQuery(evt.target.value)}/>
+          <input type='text' className='search-input' placeholder='Search Titles' value={this.state.query} onChange={(evt) => this.updateQuery(evt.target.value)}/>
         </div>
 
         <div className='results-container'>
