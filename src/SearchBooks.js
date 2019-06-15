@@ -1,26 +1,30 @@
 import React from 'react';
 import Book from './Book';
+import * as BooksAPI from './BooksAPI';
 import './SearchBooks.css';
 
 class SearchBooks extends React.Component {
   state = {
-    query: ''
+    query: '',
+    books: [],
+  }
+
+  searchBooksAPI(query) {
+    BooksAPI.search(query.toLowerCase())
+      .then( (resp) => {
+        resp.error ? this.setState({books:[]}) : this.setState({ books: resp });
+      } );
   }
 
   updateQuery(queryString) {
     this.setState({ query: queryString });
+    queryString !== '' ? this.searchBooksAPI(queryString) : this.setState( {books: []} )
   }
 
   render() {
-    // if the query is not empty, we will show results
-    const showBooks = this.state.query !== ''
-      ? this.props.books.filter( (book) => book.title.toLowerCase().includes(this.state.query.toLowerCase()))
-      : []
-
-    // TODO: filter other properties of a book, like authors and categories/genres
-    // const moreBooks = this.state.query !== ''
-    //   ? this.props.books.filter( (book) => book.authors.filter( (author) => author.toLowerCase().includes(this.state.query.toLowerCase())))
-    //   : []
+    const showBooks = this.state.books;
+    let showEmptyMessage;
+    showBooks.length < 1 && this.state.query !== '' ? showEmptyMessage = true : showEmptyMessage = false
 
     return(
       <div className='SearchBooks'>
@@ -32,6 +36,10 @@ class SearchBooks extends React.Component {
           {showBooks.map( (book) => (
             <Book book={book} key={book.id} updateShelf={this.props.updateShelf} />
           ) )}
+          {showEmptyMessage === true
+            ? (<p>There are no results matching your query.</p>)
+            : (<p></p>)
+          }
         </div>
       </div>
     );

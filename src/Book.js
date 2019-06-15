@@ -1,6 +1,5 @@
 import React from 'react';
 import './Book.css';
-// import * as BooksAPI from './BooksAPI';
 
 class Book extends React.Component {
   state = {
@@ -10,10 +9,8 @@ class Book extends React.Component {
   }
 
   componentDidMount() {
-    this.setState({
-      activeShelf: this.props.book.shelf,
-      imageURL: this.props.book.imageLinks.thumbnail
-    });
+    this.props.book.shelf ? this.setState({activeShelf: this.props.book.shelf}) : this.setState({activeShelf: ''})
+    this.props.book.imageLinks ? this.setState({imageURL: this.props.book.imageLinks.thumbnail}) : this.setState({imageURL: ''})
   }
 
   closeMenu = () => {
@@ -23,7 +20,7 @@ class Book extends React.Component {
   render() {
     return(
       <div className='Book'>
-        <img src={this.state.imageURL} className='book-img' alt='placeholder' />
+        <img src={this.state.imageURL} className='book-img' alt={this.props.book.title} />
         <button className='add-button' onClick={ () => this.setState({menuOpen: true}) }>
           <svg fill="#fff" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" className='add-svg'>
             <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
@@ -48,9 +45,12 @@ class Book extends React.Component {
           </div>
         }
         <p className='book-title'>{this.props.book.title}</p>
-        {this.props.book.authors.map( (authorName) => (
+        { this.props.book.authors
+          ? this.props.book.authors.map( (authorName) => (
           <p key={authorName} className='book-author'>{authorName}</p>
-        ) )}
+          ))
+          : []
+        }
       </div>
     );
   }
