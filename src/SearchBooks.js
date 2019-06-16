@@ -34,7 +34,7 @@ class SearchBooks extends React.Component {
 
         <div className='results-container'>
           {showBooks.map( (book) => (
-            <Book book={book} key={book.id} updateShelf={this.props.updateShelf} />
+            <Book myShelves={this.props.myShelves} book={book} key={book.id} updateShelf={this.props.updateShelf} />
           ) )}
           {showEmptyMessage === true
             ? (<p>There are no results matching your query.</p>)

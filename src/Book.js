@@ -9,8 +9,18 @@ class Book extends React.Component {
   }
 
   componentDidMount() {
+    this.getShelf();
     this.props.book.shelf ? this.setState({activeShelf: this.props.book.shelf}) : this.setState({activeShelf: ''})
     this.props.book.imageLinks ? this.setState({imageURL: this.props.book.imageLinks.thumbnail}) : this.setState({imageURL: ''})
+  }
+
+  getShelf() {
+    let currBooks = this.props.myShelves.filter( (book) => book.id === this.props.book.id );
+    if (currBooks.length > 0) {
+      this.props.book.shelf = currBooks[0].shelf;
+    } else {
+      this.props.book.shelf = '';
+    }
   }
 
   closeMenu = () => {

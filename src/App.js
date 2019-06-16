@@ -11,8 +11,14 @@ class App extends React.Component {
     books: [],
   }
 
+  componentDidMount() {
+    BooksAPI.getAll()
+      .then( (books) => {
+        this.setState( () => ({books}) );
+      });
+  }
+
   updateShelf = (bookID, shelf) => {
-    // inefficient way to filter books and concatenate new book object with update shelf
     const filteredBooks = this.state.books.filter((b) => {
       return b.id !== bookID
     });
@@ -40,13 +46,6 @@ class App extends React.Component {
       });
   }
 
-  componentDidMount() {
-    BooksAPI.getAll()
-      .then( (books) => {
-        this.setState( () => ({books}) );
-      });
-  }
-
   render() {
     const currentlyReading = this.state.books.filter( (book) => book.shelf === 'currentlyReading' );
     const readLater = this.state.books.filter( (book) => book.shelf === 'wantToRead' );
@@ -57,14 +56,14 @@ class App extends React.Component {
         <Nav />
         <Route exact path='/' render={ () => (
           <div className='homeRoute'>
-            <Shelf title='Currently Reading' books={currentlyReading} updateShelf={this.updateShelf} />
-            <Shelf title='Read Later' books={readLater} updateShelf={this.updateShelf} />
-            <Shelf title='Completed' books={completedBooks} updateShelf={this.updateShelf} />
+            <Shelf myShelves={this.state.books} title='Currently Reading' books={currentlyReading} updateShelf={this.updateShelf} />
+            <Shelf myShelves={this.state.books} title='Read Later' books={readLater} updateShelf={this.updateShelf} />
+            <Shelf myShelves={this.state.books} title='Completed' books={completedBooks} updateShelf={this.updateShelf} />
           </div>
         ) } />
         <Route exact path='/search' render={ () => (
           <div className='searchRoute'>
-            <SearchBooks updateShelf={this.updateShelf} />
+            <SearchBooks myShelves={this.state.books} updateShelf={this.updateShelf} />
           </div>
         ) } />
       </div>
